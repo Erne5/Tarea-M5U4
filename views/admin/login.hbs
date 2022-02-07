@@ -1,0 +1,25 @@
+<div class="container" style="margin-top:100px">
+    <div class="row">
+        <form action="/admin/login" method="post">
+            <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Nombre de Usuario</label>
+                <div class="col-sm-10">
+                    <input type="text" placeholder="ingrese usuario" class="form-control" id="staticEmail" name="usuario">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" placeholder="contraseña" class="form-control" id="inputPassword" name="password">
+                </div>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3">Ingresar</button>
+            </div>
+        </form>
+        {{#if error}}
+            <p>Usuario o Clave incorrecto.</p>
+        {{/if}}
+    </div>
+</div>
+
