@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var novedadesModel = require('./../models/novedadesModel');
 var cloudinary = require('cloudinary').v2;
-var nosemailer = require('nodemailer');
+var nodemailer = require('nodemailer');
 
 router.get('/novedades', async function (req, res, next) {
     let novedades = await novedadesModel.getNovedades();
@@ -30,6 +30,7 @@ router.get('/novedades', async function (req, res, next) {
 });
 
 router.post('/contacto', async (req, res) => {
+    
     const mail = {
         to: 'erne24.88@gmail.com',
         subjet: 'Contacto Motomensajeria-web',
