@@ -10,8 +10,8 @@ router.get('/novedades', async function (req, res, next) {
     novedades = novedades.map(novedades => {
         if (novedades.img_id) {
             const imagen = cloudinary.url(novedades.img_id, {
-                width: 960,
-                height: 200,
+                width: 1200,
+                height: 300,
                 crop: 'fill'
             });
             return {
@@ -33,11 +33,11 @@ router.post('/contacto', async (req, res) => {
     
     const mail = {
         to: 'erne24.88@gmail.com',
-        subjet: 'Contacto Motomensajeria-web',
+        subject: 'Contacto Motomensajeria-web',
         html: `${req.body.nombre} se contacto a traves de la web y quiere más informacion a este correo: ${req.body.email} <br> Además, hizo el siguiente comentario: ${req.body.mensaje} <br> Su tel es: ${req.body.telefono}`
     }
 
-    const transport = nodemailer.createTransport({
+    var transport = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
         port: process.env.SMTP_PORT,
         auth: {
@@ -46,7 +46,7 @@ router.post('/contacto', async (req, res) => {
         }
     });
 
-    await transport.senMail(mail)
+    await transport.sendMail(mail)
 
     res.status(201).json({
         error: false,
